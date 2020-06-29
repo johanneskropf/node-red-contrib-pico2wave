@@ -6,7 +6,7 @@ A simple wrapper around the pico2wave commandline tts tool for use in nodered on
 
 ## Prerequisites
 
-To use this node you need to have pico2wave installed. Unfortunately on Raspberrypi OS non-free Debian packages are not included by default. Some info on how to install it can be found in this [raspberrypi forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=220494) or you can compile it from [source](https://github.com/naggety/picotts).
+To use this node you need to have pico2wave installed. Unfortunately on Raspberrypi OS non-free Debian packages are not included by default. Some info on how to install it can be found in this [raspberrypi forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=220494) in the 5th post or you can compile it from [source](https://github.com/naggety/picotts).
 
 ## Usage
 
