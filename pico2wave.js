@@ -79,17 +79,17 @@ module.exports = function(RED) {
                 switch (node.outputToFile){
                     case "file":
                         msg.payload = node.filePath
-                        send(msg);
+                        (send) ? send(msg) : node.send(msg);
                         node_status(["tts generation done","green","dot"],1500);
                         break;
                         
                     case "buffer":
                         msg.payload = fs.readFileSync(node.filePath);
-                        send(msg);
+                        (send) ? send(msg) : node.send(msg);
                         node_status(["tts generation done","green","dot"],1500);
                         break;
                 }
-                done();
+                if (done) { done(); }
                 return;
             });
             
