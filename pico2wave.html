@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType('pico2wave',{
+        category: 'pico2wave',
+        color: '#00FA9A',
+        defaults: {
+            name: {value:""},
+            language: {value:"en-US"},
+            outputToFile: {value:"buffer"},
+            manualPath: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-comment-o",
+        label: function() {
+            return this.name||"pico2wave";
+        },
+        oneditprepare: function() {
+            var node = this;
+            
+            $("#node-input-outputToFile").on("change", function(){
+                let output = $("#node-input-outputToFile").val();
+                if(output == "buffer"){
+                    $("#outputPathWrapper").hide();
+                } else {
+                    $("#outputPathWrapper").show();
+                }
+            });
+            
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="pico2wave">
+    <div class="form-row">
+        <label for="node-input-language"></i>language</label>
+        <select id="node-input-language">
+            <option value="en-US">English(US)</option>
+            <option value="en-GB">English(GB)</option>
+            <option value="fr-FR">French</option>
+            <option value="de-DE">German</option>
+            <option value="it-IT">Italian</option>
+            <option value="es-ES">Spanish</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputToFile"></i>output as</label>
+        <select id="node-input-outputToFile">
+            <option value="buffer">a single buffer in the msg.payload</option>
+            <option value="file">a file on the local file system</option> 
+        </select>
+    </div>
+    <div id="outputPathWrapper" class="form-row" style="display:inline;">
+        <div>
+            <label for="node-input-manualPath"><i class="icon-tag"></i>output File</label>
+            <input type="text" id="node-input-manualPath" placeholder="" style="display:inline-block; width: 60%; vertical-align:baseline;">
+            <label for="node-input-manualPath" id="outputExt" style="width: 10%;">.wav</label>
+        </div><br>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="pico2wave">
+    <p>a simple wrapper around the pico2wave commandline tts tool for use in nodered</p>
+</script>
