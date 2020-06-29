@@ -3,6 +3,7 @@
 ## About
 
 A simple wrapper around the pico2wave commandline tts tool for use in nodered on linux.
+This suite consists of one node that converts a string to spoken audio using svox pico tts.
 
 ## Prerequisites
 
