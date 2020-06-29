@@ -15,4 +15,4 @@ To install the node execute ```npm install johanneskropf/node-red-contrib-pico2w
 
 ## Usage
 
-The node is very barebones right now. It accepts the text to be spoken as a string in the message payload. In the nodes config you can choose the language to be used (en-US, en-GB, de-DE, es-ES, fr-FR, it-IT) and if the node should output the tts audio as a buffer in the msg.payload or write it to a file on the file system. Either way the audio is output as mono 16000 kHz wav audio.
+The node is very barebones right now. It accepts the text to be spoken as a string in the **msg.payload**. In the nodes config you can choose the language to be used (en-US, en-GB, de-DE, es-ES, fr-FR, it-IT) and if the node should output the tts audio as a buffer in the **msg.payload** or write it to a file on the file system. Either way the audio is output as mono 16000 kHz wav audio.
