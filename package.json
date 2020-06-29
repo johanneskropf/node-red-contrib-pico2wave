@@ -9,6 +9,7 @@
     "tts",
     "texttospeech",
     "pico2wave",
+    "picotts",
     "nodered"
   ],
   "repository": {
