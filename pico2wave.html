@@ -4,6 +4,9 @@
         color: '#00FA9A',
         defaults: {
             name: {value:""},
+            inputType: {value:"msg"},
+            inputProp: {value:"payload"},
+            outputProp: {value:"payload"},
             language: {value:"en-US"},
             outputToFile: {value:"buffer"},
             manualPath: {value:""}
@@ -16,6 +19,17 @@
         },
         oneditprepare: function() {
             var node = this;
+            
+            $("#node-input-inputProp").typedInput({
+                type:"msg",
+                types:["msg","flow","global"],
+                typeField: "#node-input-inputType"
+            });
+            
+            $("#node-input-outputProp").typedInput({
+                type:"msg",
+                types:["msg"]
+            });
             
             $("#node-input-outputToFile").on("change", function(){
                 let output = $("#node-input-outputToFile").val();
@@ -31,8 +45,19 @@
 </script>
 
 <script type="text/html" data-template-name="pico2wave">
+    <h4>input / output</h4>
     <div class="form-row">
-        <label for="node-input-language"></i>language</label>
+        <label for="node-input-inputProp"><i class="fa fa-sign-in"></i> input field</label>
+        <input type="text" id="node-input-inputProp">
+        <input type="hidden" id="node-input-inputType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputProp"><i class="fa fa-sign-out"></i> output field</label>
+        <input type="text" id="node-input-outputProp">
+    </div>
+    <h4>settings</h4>
+    <div class="form-row">
+        <label for="node-input-language"><i class="fa fa-book"></i> language</label>
         <select id="node-input-language">
             <option value="en-US">English(US)</option>
             <option value="en-GB">English(GB)</option>
@@ -43,7 +68,7 @@
         </select>
     </div>
     <div class="form-row">
-        <label for="node-input-outputToFile"></i>output as</label>
+        <label for="node-input-outputToFile"><i class="fa fa-hdd-o"></i> output as</label>
         <select id="node-input-outputToFile">
             <option value="buffer">a single buffer in the msg.payload</option>
             <option value="file">a file on the local file system</option> 
@@ -56,8 +81,9 @@
             <label for="node-input-manualPath" id="outputExt" style="width: 10%;">.wav</label>
         </div><br>
     </div>
+    <h4>other</h4>
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <label for="node-input-name"><i class="icon-tag"></i> name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>

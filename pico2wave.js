@@ -4,6 +4,9 @@ module.exports = function(RED) {
     
     function Pico2WaveNode(config) {
         RED.nodes.createNode(this,config);
+        this.inputType = config.inputType || "msg";
+        this.inputProp = config.inputProp || "payload";
+        this.outputProp = config.outputProp || "payload";
         this.fileId = "";
         this.filePath = "";
         this.outputToFile = config.outputToFile;
@@ -63,9 +66,30 @@ module.exports = function(RED) {
         
         node.on('input', function(msg, send, done) {
             
-            const command = node.pico2waveCommand + " \"" + msg.payload + "\"";
+            let input;
+            switch (node.inputType) {
+                
+                case "msg":
+                    input = RED.util.getMessageProperty(msg, node.inputProp);
+                    break;
+                    
+                case "flow":
+                    const flowContext = node.context().flow;
+                    input = flowContext.get(node.inputProp);
+                    break;
+                    
+                case "global":
+                    const globalContext = node.context().global;
+                    input = globalContext.get(node.inputProp);
+                    break;
+                    
+            }
+            
+            const command = node.pico2waveCommand + " \"" + input + "\"";
+            let output;
             
             node.pico2wave = exec(command, (error, stdout, stderr) => {
+                
                 if (error) {
                     node_status(["error","red","dot"]);
                     (done) ? done(error) : node.error(error);
@@ -76,21 +100,25 @@ module.exports = function(RED) {
                     (done) ? done(stderr) : node.error(stderr);
                     return;
                 }
+                
                 switch (node.outputToFile){
+                    
                     case "file":
-                        msg.payload = node.filePath
-                        (send) ? send(msg) : node.send(msg);
-                        node_status(["tts generation done","green","dot"],1500);
+                        output = node.filePath
                         break;
                         
                     case "buffer":
-                        msg.payload = fs.readFileSync(node.filePath);
-                        (send) ? send(msg) : node.send(msg);
-                        node_status(["tts generation done","green","dot"],1500);
+                        output = fs.readFileSync(node.filePath);
                         break;
+                        
                 }
+                
+                RED.util.setMessageProperty(msg, node.outputProp, output, true);
+                (send) ? send(msg) : node.send(msg);
+                node_status(["tts generation done","green","dot"],1500);
                 if (done) { done(); }
                 return;
+                
             });
             
         });
