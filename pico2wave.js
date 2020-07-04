@@ -83,6 +83,9 @@ module.exports = function(RED) {
                     input = globalContext.get(node.inputProp);
                     break;
                     
+                case "str":
+                    input = node.inputProp;
+                    
             }
             
             const command = node.pico2waveCommand + " \"" + input + "\"";
