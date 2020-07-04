@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-pico2wave",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a simple wrapper around the pico2wave commandline tts tool for use in nodered",
   "author": "Johannes Kropf",
   "license": "Apache-2.0",
@@ -9,7 +9,6 @@
     "tts",
     "texttospeech",
     "pico2wave",
-    "picotts",
     "nodered"
   ],
   "repository": {
