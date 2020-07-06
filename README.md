@@ -14,7 +14,7 @@ use ```sudo apt-get install libttspico-utils``` to install it.
 
 Unfortunately on Raspberrypi OS non-free Debian packages are not included by default. As an alternative you can download and install the packages manually
 as follows:
-```
+```bash
 wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb
 wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb
 sudo apt-get install -f ./libttspico0_1.0+git20130326-9_armhf.deb ./libttspico-utils_1.0+git20130326-9_armhf.deb
