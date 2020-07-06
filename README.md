@@ -23,7 +23,8 @@ or you can compile it from [source](https://github.com/naggety/picotts).
 
 ## Installing the node
 
-To install the node execute ```npm install johanneskropf/node-red-contrib-pico2wave``` from your node-red folder (typically ```~/.node-red```).
+To install the node execute ```npm install johanneskropf/node-red-contrib-pico2wave``` from your node-red folder (typically ```~/.node-red```). To install directly
+from a repository with npm you need to have git installed (*```sudo apt-get install git```*).
 
 ## Usage
 
