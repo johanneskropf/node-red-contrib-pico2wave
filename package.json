@@ -9,7 +9,8 @@
     "tts",
     "texttospeech",
     "pico2wave",
-    "nodered"
+    "nodered",
+    "node-red"
   ],
   "repository": {
         "type": "git",
